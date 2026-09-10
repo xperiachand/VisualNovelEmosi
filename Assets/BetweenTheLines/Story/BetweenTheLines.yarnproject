@@ -1,0 +1,9 @@
+{
+  "projectFileVersion": 3,
+  "sourceFiles": [
+    "./*.yarn"
+  ],
+  "excludeFiles": [],
+  "localisation": {},
+  "baseLanguage": "id"
+}

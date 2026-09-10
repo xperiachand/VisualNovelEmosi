@@ -16,4 +16,11 @@ public class CharacterVisualScript : MonoBehaviour
     {
         reyDummy.color = Color.white;
     }
+
+    [YarnCommand("set_expression")]
+    public void SetExpression(string emotion)
+    {
+
+    }
+
 }

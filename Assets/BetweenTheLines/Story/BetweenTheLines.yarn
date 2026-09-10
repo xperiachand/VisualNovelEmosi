@@ -1,0 +1,311 @@
+title: opening
+---
+<<declare $fear1 = false>>
+<<declare $fear2 = false>>
+<<declare $sadness1 = false>>
+<<declare $sadness2 = false>>
+<<declare $anger1 = false>>
+<<declare $anger2 = false>>
+<<declare $fearKnown = false>>
+<<declare $sadnessKnown = false>>
+<<declare $angerKnown = false>>
+<<declare $finalCorrect = false>>
+<<declare $finalAnswer = "">>
+<<chapter "PROLOGUE / THE USUAL TABLE">>
+Bayu: Rey mah masih bebas. Belum ada bos yang ngejar-ngejar. #mood:joking
+Rey: Iya. #mood:neutral
+Rey: ...Bebas banget. #mood:awkward
+<<jump fear1>>
+===
+
+title: fear1
+---
+<<chapter "01 / FEAR">>
+Rey: Kadang gue mikir sih... #mood:worried
+Rey: Kalau beberapa bulan lagi masih begini gimana. #mood:worried
+-> Masih begini maksudnya belum dapat kerja?
+    Rey: Iya. #mood:worried
+    Rey: Udah setahun, kan. #mood:worried
+    Rey: Gue mulai mikir... ini bakal sampai kapan? #mood:worried
+    <<set $fear1 = true>>
+    <<clue "fear1">>
+    <<jump fear2>>
+-> Nggak usah terlalu dipikirin.
+    Rey: Hmm... #mood:awkward
+    Rey: Iya. #mood:neutral
+    <<jump fearIdentification>>
+-> Santai, baru setahun juga.
+    Rey: Iya sih. #mood:neutral
+    <<jump fearIdentification>>
+===
+
+title: fear2
+---
+<<if not $fear1>>
+    <<jump fearIdentification>>
+<<endif>>
+Player: Yang paling bikin lu khawatir apanya?
+Rey: Kadang gue udah takut duluan sebelum interview. #mood:worried
+Rey: Kayak... #mood:worried
+Rey: Mereka bakal lihat gue terus mikir— #mood:worried
+Rey: "Orang ini sebenarnya bisa apa sih?" #mood:worried
+-> Lu takut mereka nganggap lu nggak cukup bagus?
+    Rey: ...iya. #mood:sad
+    Rey: Padahal belum tentu mereka mikir begitu. #mood:sad
+    <<set $fear2 = true>>
+    <<clue "fear2">>
+    <<jump fearIdentification>>
+-> Ya tinggal jawab interview-nya lebih pede.
+    Rey: Iya. #mood:neutral
+    Rey: Gue tahu. #mood:awkward
+    <<jump fearIdentification>>
+-> Mungkin memang interview lu kurang bagus?
+    Rey: ...bisa jadi. #mood:defensive
+    <<jump fearIdentification>>
+===
+
+title: fearIdentification
+---
+<<question "WHAT IS REY FEELING?" "Apa emosi utama yang paling terlihat dari Rey?">>
+-> Sadness
+    <<set $fearKnown = false>>
+    <<feedback "fear">>
+    <<jump sadnessTrigger>>
+-> Fear
+    <<set $fearKnown = true>>
+    <<feedback "fear">>
+    <<jump sadnessTrigger>>
+-> Anger
+    <<set $fearKnown = false>>
+    <<feedback "fear">>
+    <<jump sadnessTrigger>>
+===
+
+title: sadnessTrigger
+---
+<<chapter "02 / SADNESS">>
+Dimas: Eh, Arga sekarang kerja di Singapura ternyata. #mood:casual
+Citra: Serius? #mood:concerned
+Citra: Cepat banget dia. #mood:concerned
+Bayu: Anak itu emang dari dulu ambisius. #mood:neutral
+Rey: Kayaknya anak-anak kita udah pada jauh ya. #mood:sad
+<<jump sadness1>>
+===
+
+title: sadness1
+---
+-> Lu ngerasa tertinggal dari mereka?
+    Rey: ...sedikit. #mood:sad
+    Rey: Pas lulus dulu gue pikir sekarang minimal gue udah punya kerja tetap. #mood:sad
+    <<set $sadness1 = true>>
+    <<clue "sadness1">>
+    <<jump sadness2>>
+-> Jangan bandingin hidup lu sama orang lain.
+    Rey: Gue tahu. #mood:awkward
+    <<jump sadnessIdentification>>
+-> Arga emang beda sih. Dia dari dulu jago.
+    Rey: Iya. #mood:sad
+    <<jump sadnessIdentification>>
+===
+
+title: sadness2
+---
+<<if not $sadness1>>
+    <<jump sadnessIdentification>>
+<<endif>>
+Rey: Dulu tiap lihat lowongan baru gue langsung apply. #mood:sad
+Rey: Sekarang... #mood:sad
+Rey: Kadang gue lihat aja udah males. #mood:sad
+-> Lu mulai ngerasa percuma karena berkali-kali gagal?
+    Rey: Iya. #mood:sad
+    Rey: Kadang gue udah bisa nebak email yang bakal datang. #mood:sad
+    Rey: "Kami memutuskan melanjutkan kandidat lain." #mood:sad
+    Rey: Jadi buat apa berharap tinggi-tinggi. #mood:sad
+    <<set $sadness2 = true>>
+    <<clue "sadness2">>
+    <<jump sadnessIdentification>>
+-> Berarti lu harus lebih rajin cari lowongan.
+    Rey: Iya. #mood:neutral
+    <<jump sadnessIdentification>>
+-> Mungkin lu cuma lagi malas.
+    Rey: ...mungkin. #mood:defensive
+    <<jump sadnessIdentification>>
+===
+
+title: sadnessIdentification
+---
+<<question "WHAT IS REY FEELING?" "Apa emosi yang paling terlihat dari Rey?">>
+-> Fear
+    <<set $sadnessKnown = false>>
+    <<feedback "sadness">>
+    <<jump angerTrigger>>
+-> Anger
+    <<set $sadnessKnown = false>>
+    <<feedback "sadness">>
+    <<jump angerTrigger>>
+-> Sadness
+    <<set $sadnessKnown = true>>
+    <<feedback "sadness">>
+    <<jump angerTrigger>>
+===
+
+title: angerTrigger
+---
+<<chapter "03 / ANGER">>
+Bayu: Kalau mau, kantor gue lagi buka junior position. #mood:neutral
+Bayu: Gue bisa tanyain HR. #mood:neutral
+Rey: Nggak usah. #mood:defensive
+Bayu: Kenapa? #mood:confused
+Rey: Gue bisa cari sendiri. #mood:defensive
+<<jump anger1>>
+===
+
+title: anger1
+---
+-> Lu nggak nyaman karena Bayu nawarin bantuan?
+    Rey: Bukan bantuannya. #mood:defensive
+    Rey: Gue cuma... #mood:defensive
+    Rey: Nggak suka rasanya kayak gue perlu diselamatin. #mood:defensive
+    <<set $anger1 = true>>
+    <<clue "anger1">>
+    <<jump anger2>>
+-> Bayu cuma bermaksud baik kok.
+    Rey: Gue tahu. #mood:awkward
+    <<jump angerIdentification>>
+-> Kenapa sih lu malah nolak?
+    Rey: Ya karena gue nggak mau. #mood:angry
+    <<jump angerIdentification>>
+===
+
+title: anger2
+---
+<<if not $anger1>>
+    <<jump angerIdentification>>
+<<endif>>
+Rey: Semua orang selalu bilang hal yang sama. #mood:angry
+Rey: "Coba ini." #mood:angry
+Rey: "Coba itu." #mood:angry
+Rey: "Lebih rajin apply." #mood:angry
+Rey: Gue udah coba semuanya. #mood:angry
+-> Lu kesel karena merasa udah berusaha tapi nggak ada hasilnya?
+    Rey: Iya. #mood:angry
+    Rey: Gue capek banget denger orang ngomong seolah gue belum berusaha. #mood:angry
+    <<set $anger2 = true>>
+    <<clue "anger2">>
+    <<jump angerIdentification>>
+-> Tapi mereka cuma berusaha bantu lu.
+    Rey: Gue tahu. #mood:defensive
+    <<jump angerIdentification>>
+-> Mungkin cara lu usahanya yang salah.
+    Rey: ...ya udah. #mood:angry
+    <<jump angerIdentification>>
+===
+
+title: angerIdentification
+---
+<<question "WHAT IS REY FEELING?" "Apa emosi dominan Rey dalam situasi tadi?">>
+-> Anger
+    <<set $angerKnown = true>>
+    <<feedback "anger">>
+    <<jump clueReview>>
+-> Sadness
+    <<set $angerKnown = false>>
+    <<feedback "anger">>
+    <<jump clueReview>>
+-> Fear
+    <<set $angerKnown = false>>
+    <<feedback "anger">>
+    <<jump clueReview>>
+===
+
+title: clueReview
+---
+<<review>>
+<<jump finalDeduction>>
+===
+
+title: finalDeduction
+---
+Rey: Sorry tadi gue agak ngegas. #mood:awkward
+Rey: Gue juga nggak ngerti kenapa tiap ngomongin kerjaan gue jadi begini. #mood:awkward
+<<chapter "FINAL / BETWEEN THE LINES">>
+<<question "FINAL EMOTION" "Berdasarkan semua yang kamu lihat malam ini, apa yang sebenarnya sedang dirasakan Rey?">>
+-> Jealous
+    <<set $finalAnswer = "Jealous">>
+    <<set $finalCorrect = false>>
+    <<jump ResolveEnding>>
+-> Guilty
+    <<set $finalAnswer = "Guilty">>
+    <<set $finalCorrect = false>>
+    <<jump ResolveEnding>>
+-> Insecure
+    <<set $finalAnswer = "Insecure">>
+    <<set $finalCorrect = true>>
+    <<jump ResolveEnding>>
+===
+
+title: goodEndingScript
+---
+Player: Kayaknya lu bukan cuma takut belum dapat kerja.
+Rey: Maksud lu? #mood:worried
+Player: Semua penolakan itu mulai bikin lu mempertanyakan diri lu sendiri.
+Player: Kayak lu mulai takut...
+Player: Jangan-jangan lu memang nggak cukup bagus.
+Rey: ...iya. #mood:sad
+Rey: Mungkin itu yang paling gue takut buat bilang. #mood:sad
+Citra: Kita nggak harus punya jawaban buat semuanya malam ini. #mood:concerned
+Bayu: Dan tawaran gue bukan karena gue kasihan. #mood:neutral
+Dimas: Lu masih Rey yang sama. #mood:casual
+Dimas: Kerja atau belum. #mood:casual
+Rey: (Rey tersenyum tipis.) #mood:relieved
+<<ending "good">>
+<<stop>>
+===
+
+title: badEndingJealous
+---
+Player: Kayaknya lu sebenarnya iri sama orang-orang yang udah kerja.
+Rey: ...iri? #mood:defensive
+Rey: Ya udahlah. #mood:angry
+Rey: Gue pulang dulu. #mood:angry
+Bayu: Rey— #mood:confused
+Rey: Besok aja. #mood:angry
+Rey: (Rey pergi.) #mood:angry
+<<ending "bad">>
+<<stop>>
+===
+
+title: badEndingGuilty
+---
+Player: Lu ngerasa bersalah karena belum dapat kerja?
+Rey: ...bersalah? #mood:defensive
+Rey: Nggak. Bukan itu. #mood:defensive
+Rey: Ya udah, nggak penting juga. #mood:sad
+Bayu: Rey, santai— #mood:confused
+Rey: Gue capek, duluan ya. #mood:sad
+Rey: (Rey pergi.) #mood:sad
+<<ending "bad">>
+<<stop>>
+===
+
+title: badEndingIncomplete
+---
+Rey: ...mungkin. #mood:awkward
+Rey: (Rey terlihat ragu, seperti belum sepenuhnya yakin kamu benar-benar mengerti.) #mood:awkward
+<<ending "bad">>
+<<stop>>
+===
+
+title: ResolveEnding
+---
+<<if $fear1 and $fear2 and $sadness1 and $sadness2 and $anger1 and $anger2 and $fearKnown and $sadnessKnown and $angerKnown and $finalCorrect>>
+    <<jump goodEndingScript>>
+<<elseif $finalAnswer == "Jealous">>
+    <<jump badEndingJealous>>
+<<elseif $finalAnswer == "Guilty">>
+    <<jump badEndingGuilty>>
+<<else>>
+    Player: Gue rasa lu mulai ngerasa insecure soal ini semua.
+    <<jump badEndingIncomplete>>
+<<endif>>
+===
